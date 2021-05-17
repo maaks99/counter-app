@@ -13,6 +13,11 @@ const CounterHook = (props) => {
     const [showClock, tgClock] = useState(true);
     const [stepValue, setValue] = useState(0);
 
+    useEffect(() => {
+        setDate(props.initValue)
+
+    },[props.initValue])
+    
     const changeValue = (action) => {
         setDate((prevState, prevProps) => {
             let currentCounterValue = prevState.counterValue;
@@ -22,7 +27,7 @@ const CounterHook = (props) => {
             } else if (action === 'reinit') {
                 currentCounterValue = prevProps.initValue;
             } else if(action === 'step'){
-                currentCounterValue += this.state.stepValue;
+                currentCounterValue += stepValue;
             }
             else {
                 currentCounterValue = 0;
@@ -33,9 +38,6 @@ const CounterHook = (props) => {
             });
         })
     }
-
-
-
 
     useEffect(() => {
         tgClock(props.showClock)
@@ -64,7 +66,7 @@ const CounterHook = (props) => {
         <div className="counter">
             Counter:
             <Display displayValue={counterValue} />
-            <ButtonsPanel buttonMethod={props.changeValue} stepValue={stepValue} />
+            <ButtonsPanel buttonMethod={changeValue} stepValue={stepValue} />
             <Step updateStep={stepValue}/>
             {/* {clockElement} */}
         </div>
