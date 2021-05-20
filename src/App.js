@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Hooks from './Hooks';
+import CounterHook from './CounterHook';
 // import Counter from './Counter'
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Counter App in ReactJS</h1>
       </header>
-      <Hooks initValue={0}/>
-      <Hooks initValue={108}/>
+      <CounterHook initValue={0}/>
+      <CounterHook initValue={108}/>
 
     </div>
   );
